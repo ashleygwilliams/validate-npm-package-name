@@ -21,6 +21,8 @@ pub fn validate(pkg_name: &str) -> bool {
     return false
   } else if START_WITH_UNDERSCORE_PATTERN.is_match(pkg_name) {
     return false
+  } else if pkg_name.to_string().trim() != pkg_name.to_string() {
+    return false
   }
   true
 }

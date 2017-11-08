@@ -45,3 +45,15 @@ fn name_cannot_start_with_period_or_underscore() {
     assert_eq!(result, false, "package name should not start with a period or underscore");
   }
 }
+
+#[test]
+fn name_cannot_have_leading_or_trailing_space() {
+  let pkg_names = vec![
+    " leadingspace",
+    "trailingspace ",
+  ];
+  for name in pkg_names {
+    let result = validate(name);
+    assert_eq!(result, false, "package name should not have leading or trialing space");
+  }
+}

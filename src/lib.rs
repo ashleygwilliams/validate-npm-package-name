@@ -9,7 +9,7 @@ use regex::Regex;
 
 lazy_static! {
   //static ref scopedPackagePattern: Regex = Regex::new(r"^(?:@([^/]+?)[/])?([^/]+?)$").unwrap();
-  static ref SPECIAL_CHARACTERS_PATTERN: Regex = Regex::new(r"[~'!()*]").unwrap();
+  static ref SPECIAL_CHARACTERS_PATTERN: Regex = Regex::new(r"[~'!)(\\*]").unwrap();
 }
 
 pub fn validate(pkg_name: &str) -> bool {

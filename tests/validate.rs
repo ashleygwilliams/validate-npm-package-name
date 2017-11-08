@@ -18,8 +18,18 @@ fn test_valid_name() {
 }
 
 #[test]
-fn test_name_cannot_have_exclamation_mark() {
-  let pkg = "crazy!";
-  let result = validate(pkg);
-  assert_eq!(result, false, "packages cannot contain an exclamation mark");
+fn test_name_cannot_have_special_characters() {
+  let pkg_names = vec![
+    "~tilde",
+    "back\\slash",
+    "t'ck",
+    "exclamation!",
+    "(openparens",
+    "closeparens)",
+    "asteri*sk",
+  ];
+  for name in pkg_names {
+    let result = validate(name);
+    assert_eq!(result, false, "package name should not contain special characters");
+  }
 }

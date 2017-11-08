@@ -57,3 +57,15 @@ fn name_cannot_have_leading_or_trailing_space() {
     assert_eq!(result, false, "package name should not have leading or trialing space");
   }
 }
+
+#[test]
+fn name_cannot_be_on_blacklist() {
+  let pkg_names = vec![
+    "node_modules",
+    "favicon.ico",
+  ];
+  for name in pkg_names {
+    let result = validate(name);
+    assert_eq!(result, false, "package name should not be on blacklist");
+  }
+}

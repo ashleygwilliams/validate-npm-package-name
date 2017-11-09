@@ -53,3 +53,9 @@ fn name_cannot_be_longer_than_214_chars() {
   assert_eq!(false, validate(bad_name), "package name should not be longer than 214 chars");
   assert_eq!(true, validate(good_name), "package name should not be longer than 214 chars");
 }
+
+#[test]
+fn name_cannot_have_uppercase_characters() {
+  assert_eq!(false, validate("MiXeDCase"), "package name should be all lowercase characters");
+  assert_eq!(true, validate("lowercase"), "package name should be all lowercase characters");
+}

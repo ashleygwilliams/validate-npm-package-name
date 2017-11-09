@@ -30,6 +30,8 @@ pub fn validate(pkg_name: &str) -> bool {
     return false
   } else if pkg_name.len() > 214 {
     return false
+  } else if pkg_name.to_string().to_lowercase() != pkg_name.to_string() {
+    return false
   }
   true
 }

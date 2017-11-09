@@ -45,3 +45,11 @@ fn name_cannot_be_a_builtin_module() {
   assert_eq!(false, validate("http"), "package name should not be a builtin module");
   assert_eq!(false, validate("fs"), "package name should not be a builtin module");
 }
+
+#[test]
+fn name_cannot_be_longer_than_214_chars() {
+  let bad_name = "ifyouwanttogetthesumoftwonumberswherethosetwonumbersarechosenbyfindingthelargestoftwooutofthreenumbersandsquaringthemwhichismultiplyingthembyitselfthenyoushouldinputthreenumbersintothisfunctionanditwilldothatforyou-";
+  let good_name = "ifyouwanttogetthesumoftwonumberswherethosetwonumbersarechosenbyfindingthelargestoftwooutofthreenumbersandsquaringthemwhichismultiplyingthembyitselfthenyoushouldinputthreenumbersintothisfunctionanditwilldothatforyou";
+  assert_eq!(false, validate(bad_name), "package name should not be longer than 214 chars");
+  assert_eq!(true, validate(good_name), "package name should not be longer than 214 chars");
+}

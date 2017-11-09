@@ -28,6 +28,8 @@ pub fn validate(pkg_name: &str) -> bool {
     return false
   } else if BUILTINS.contains(&pkg_name) {
     return false
+  } else if pkg_name.len() > 214 {
+    return false
   }
   true
 }
